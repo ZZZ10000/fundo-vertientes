@@ -49,9 +49,10 @@ st.markdown("""
         border-radius: 8px;
         padding: 1.2rem;
         margin-bottom: 0.8rem;
+        color: #1a3c34 !important;
     }
     .metric-card h4 {
-        color: #2e7d52;
+        color: #2e7d52 !important;
         margin: 0 0 0.3rem 0;
         font-size: 0.85rem;
         text-transform: uppercase;
@@ -60,11 +61,11 @@ st.markdown("""
     .metric-card .value {
         font-size: 1.6rem;
         font-weight: 700;
-        color: #1a3c34;
+        color: #1a3c34 !important;
     }
     .metric-card .sub {
         font-size: 0.78rem;
-        color: #5a8a6e;
+        color: #3d6b50 !important;
     }
 
     /* CORFO badge */
@@ -83,6 +84,7 @@ st.markdown("""
     .corfo-badge .subtitle {
         font-size: 0.85rem;
         opacity: 0.85;
+        color: white !important;
     }
 
     /* Alert boxes */
@@ -92,6 +94,10 @@ st.markdown("""
         padding: 0.8rem 1rem;
         border-radius: 6px;
         margin: 0.5rem 0;
+        color: #1b5e20 !important;
+    }
+    .alert-ok strong {
+        color: #1b5e20 !important;
     }
     .alert-warn {
         background: #fff3e0;
@@ -99,6 +105,10 @@ st.markdown("""
         padding: 0.8rem 1rem;
         border-radius: 6px;
         margin: 0.5rem 0;
+        color: #e65100 !important;
+    }
+    .alert-warn strong {
+        color: #e65100 !important;
     }
     .alert-error {
         background: #ffebee;
@@ -106,6 +116,10 @@ st.markdown("""
         padding: 0.8rem 1rem;
         border-radius: 6px;
         margin: 0.5rem 0;
+        color: #b71c1c !important;
+    }
+    .alert-error strong {
+        color: #b71c1c !important;
     }
 
     /* Table styling */
@@ -116,18 +130,20 @@ st.markdown("""
     }
     .criteria-table th {
         background: #1a3c34;
-        color: white;
+        color: white !important;
         padding: 0.7rem;
         text-align: left;
         font-size: 0.85rem;
     }
     .criteria-table td {
         padding: 0.6rem 0.7rem;
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid #ccc;
         font-size: 0.85rem;
-    }
-    .criteria-table tr:nth-child(even) {
+        color: #1a3c34 !important;
         background: #f5f9f7;
+    }
+    .criteria-table tr:nth-child(even) td {
+        background: #eaf2ee;
     }
 
     div[data-testid="stSidebar"] {
