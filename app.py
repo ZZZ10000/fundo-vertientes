@@ -32,6 +32,11 @@ st.set_page_config(
 # ──────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
+    /* Ocultar header, menú y footer de Streamlit */
+    #MainMenu {visibility: hidden !important;}
+    footer {visibility: hidden !important;}
+    header {visibility: hidden !important;}
+
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
     .stApp {
