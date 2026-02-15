@@ -156,10 +156,18 @@ st.markdown("""
     div[data-testid="stSidebar"] .stMarkdown label {
         color: white !important;
     }
-    /* Ocultar header, menú y footer de Streamlit */
+    /* Ocultar menú hamburguesa, footer y decoración de Streamlit */
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
-    header {visibility: hidden !important;}
+    /* Ocultar botones Fork/GitHub/perfil en header */
+    [data-testid="stToolbar"] {visibility: hidden !important; height: 0px !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+    /* Ocultar avatar/perfil en mobile y desktop */
+    .viewerBadge_container__r5tak {display: none !important;}
+    .styles_viewerBadge__CvC9N {display: none !important;}
+    [data-testid="stAppViewBlockContainer"] header {display: none !important;}
+    /* Reducir espacio superior */
+    .block-container {padding-top: 1rem !important;}
 
     /* Footer personalizado */
     .custom-footer {
@@ -699,7 +707,8 @@ with tab4:
 
     # Requisitos adicionales del postulante
     st.markdown("### Requisitos del Postulante (Art. 18.4.c y 18.4.f.a)")
-    st.markdown("""
+    estado_inversion = "✅" if inversion_total >= CORFO_MIN_INVERSION else "❌"
+    st.markdown(f"""
     <table class='criteria-table'>
         <tr>
             <th>Requisito</th>
@@ -719,7 +728,7 @@ with tab4:
         <tr>
             <td>Proyecto inversión ≥ $12.000.000 CLP</td>
             <td>Art. 18.4.f.b num. 1</td>
-            <td>{"✅" if inversion_total >= CORFO_MIN_INVERSION else "❌"}</td>
+            <td>{estado_inversion} Cumple</td>
         </tr>
         <tr>
             <td>Participación Estado &lt; 40% en capital/patrimonio</td>
