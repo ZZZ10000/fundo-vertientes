@@ -32,11 +32,6 @@ st.set_page_config(
 # ──────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    /* Ocultar header, menú y footer de Streamlit */
-    #MainMenu {visibility: hidden !important;}
-    footer {visibility: hidden !important;}
-    header {visibility: hidden !important;}
-
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
     .stApp {
@@ -160,6 +155,30 @@ st.markdown("""
     div[data-testid="stSidebar"] .stMarkdown p,
     div[data-testid="stSidebar"] .stMarkdown label {
         color: white !important;
+    }
+    /* Ocultar header, menú y footer de Streamlit */
+    #MainMenu {visibility: hidden !important;}
+    footer {visibility: hidden !important;}
+    header {visibility: hidden !important;}
+
+    /* Footer personalizado */
+    .custom-footer {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+        border-top: 1px solid #2e7d52;
+        color: #aaa !important;
+        font-size: 0.8rem;
+    }
+    .custom-footer .dev-name {
+        color: #2e7d52 !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+    .custom-footer .dev-company {
+        color: #5a8a6e !important;
+        font-size: 0.75rem;
+        margin-top: 0.2rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -874,12 +893,13 @@ with tab5:
 # ──────────────────────────────────────────────────────────────────────
 # FOOTER
 # ──────────────────────────────────────────────────────────────────────
-st.markdown("---")
 st.markdown(
-    "<div style='text-align:center; color:#888; font-size:0.8rem;'>"
-    "Fundo Las Vertientes · Proyecto CORFO Activa Inversión · "
-    "Bases RE N°0259 Línea 18.4 Inversión Productiva · "
-    f"Generado: {datetime.now().strftime('%d/%m/%Y')}"
-    "</div>",
+    f"""<div class='custom-footer'>
+        Fundo Las Vertientes · Proyecto CORFO Activa Inversión · 
+        Bases RE N°0259 Línea 18.4 Inversión Productiva · 
+        Generado: {datetime.now().strftime('%d/%m/%Y')}
+        <div class='dev-name'>Desarrollado por José A. Eyzaguirre R.</div>
+        <div class='dev-company'>Fundador de Makey E.I.R.L.</div>
+    </div>""",
     unsafe_allow_html=True,
 )
