@@ -165,9 +165,19 @@ st.markdown("""
     /* Ocultar avatar/perfil en mobile y desktop */
     .viewerBadge_container__r5tak {display: none !important;}
     .styles_viewerBadge__CvC9N {display: none !important;}
-    [data-testid="stAppViewBlockContainer"] header {display: none !important;}
+    /* Mantener visible el botón de abrir/cerrar sidebar */
+    [data-testid="collapsedControl"] {visibility: visible !important; display: block !important;}
     /* Reducir espacio superior */
     .block-container {padding-top: 1rem !important;}
+    /* Ocultar barra "Alojado con Streamlit" y avatar en mobile */
+    ._profileContainer_gzau3_53 {display: none !important;}
+    ._container_gzau3_1 {display: none !important;}
+    [data-testid="stBottom"] > div {display: none !important;}
+    .viewerBadge_link__qRIco {display: none !important;}
+    .stApp [data-testid="stBottomBlockContainer"] {display: none !important;}
+    a[href="https://streamlit.io"] {display: none !important;}
+    div[class*="viewerBadge"] {display: none !important;}
+    div[class*="profileContainer"] {display: none !important;}
 
     /* Footer personalizado */
     .custom-footer {
