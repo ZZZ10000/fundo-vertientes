@@ -1,3 +1,4 @@
+
 """
 Fundo Las Vertientes - Sistema Fotovoltaico Agrícola
 Proyecto CORFO Activa Inversión: Inversión Productiva (Línea 18.4)
@@ -159,38 +160,18 @@ st.markdown("""
     /* Ocultar menú hamburguesa y footer de Streamlit */
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
-    /* Ocultar toolbar (Fork/GitHub) pero NO el header completo */
-    [data-testid="stToolbar"] {visibility: hidden !important; height: 0px !important; position: fixed !important;}
+    /* Ocultar toolbar (Fork/GitHub) */
+    [data-testid="stToolbar"] {display: none !important;}
     [data-testid="stDecoration"] {display: none !important;}
-    /* Forzar sidebar visible y funcional */
-    [data-testid="collapsedControl"] {
-        visibility: visible !important;
-        display: block !important;
-        z-index: 999999 !important;
-        position: fixed !important;
-        top: 0.5rem !important;
-        left: 0.5rem !important;
-    }
-    [data-testid="stSidebar"] {z-index: 999998 !important;}
     /* Reducir espacio superior */
     .block-container {padding-top: 1rem !important;}
-    /* OCULTAR TODO: badge Streamlit, avatar, foto, barra roja - mobile y desktop */
+    /* Ocultar badge y avatar de Streamlit */
     div[class*="viewerBadge"] {display: none !important;}
     div[class*="profileContainer"] {display: none !important;}
-    div[class*="stBottom"] {display: none !important;}
-    [data-testid="stBottom"] {display: none !important;}
-    [data-testid="stBottomBlockContainer"] {display: none !important;}
-    a[href*="streamlit.io"] {display: none !important;}
-    iframe[title="streamlit_badge"] {display: none !important;}
-    .viewerBadge_container__r5tak {display: none !important;}
-    .styles_viewerBadge__CvC9N {display: none !important;}
-    .viewerBadge_link__qRIco {display: none !important;}
-    ._container_gzau3_1 {display: none !important;}
     ._profileContainer_gzau3_53 {display: none !important;}
-    /* Ocultar cualquier elemento fijo en la parte inferior */
-    .stApp > div:last-child > div:last-child > div:last-child {
-        display: none !important;
-    }
+    ._container_gzau3_1 {display: none !important;}
+    .viewerBadge_link__qRIco {display: none !important;}
+    iframe[title="streamlit_badge"] {display: none !important;}
 
     /* Footer personalizado */
     .custom-footer {
@@ -213,23 +194,11 @@ st.markdown("""
     }
 </style>
 <script>
-    // Eliminar badge de Streamlit y avatar del DOM
+    // Eliminar badge de Streamlit y avatar del DOM en mobile
     function removeStreamlitBranding() {
-        const selectors = [
-            'div[class*="viewerBadge"]',
-            'div[class*="profileContainer"]',
-            '[data-testid="stBottom"]',
-            'a[href*="streamlit.io"]',
-            'iframe[title="streamlit_badge"]'
-        ];
-        selectors.forEach(sel => {
-            document.querySelectorAll(sel).forEach(el => el.remove());
-        });
+        document.querySelectorAll('div[class*="viewerBadge"], div[class*="profileContainer"], iframe[title="streamlit_badge"]').forEach(el => el.remove());
     }
-    // Ejecutar al cargar y repetir para elementos dinámicos
-    removeStreamlitBranding();
-    setInterval(removeStreamlitBranding, 1000);
-    new MutationObserver(removeStreamlitBranding).observe(document.body, {childList: true, subtree: true});
+    setInterval(removeStreamlitBranding, 2000);
 </script>
 """, unsafe_allow_html=True)
 
