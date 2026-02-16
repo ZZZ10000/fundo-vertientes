@@ -1,4 +1,3 @@
-
 """
 Fundo Las Vertientes - Sistema Fotovoltaico Agrícola
 Proyecto CORFO Activa Inversión: Inversión Productiva (Línea 18.4)
