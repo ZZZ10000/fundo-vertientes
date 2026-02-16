@@ -156,28 +156,41 @@ st.markdown("""
     div[data-testid="stSidebar"] .stMarkdown label {
         color: white !important;
     }
-    /* Ocultar menú hamburguesa, footer y decoración de Streamlit */
+    /* Ocultar menú hamburguesa y footer de Streamlit */
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
-    /* Ocultar botones Fork/GitHub/perfil en header */
-    [data-testid="stToolbar"] {visibility: hidden !important; height: 0px !important;}
+    /* Ocultar toolbar (Fork/GitHub) pero NO el header completo */
+    [data-testid="stToolbar"] {visibility: hidden !important; height: 0px !important; position: fixed !important;}
     [data-testid="stDecoration"] {display: none !important;}
-    /* Ocultar avatar/perfil en mobile y desktop */
-    .viewerBadge_container__r5tak {display: none !important;}
-    .styles_viewerBadge__CvC9N {display: none !important;}
-    /* Mantener visible el botón de abrir/cerrar sidebar */
-    [data-testid="collapsedControl"] {visibility: visible !important; display: block !important;}
+    /* Forzar sidebar visible y funcional */
+    [data-testid="collapsedControl"] {
+        visibility: visible !important;
+        display: block !important;
+        z-index: 999999 !important;
+        position: fixed !important;
+        top: 0.5rem !important;
+        left: 0.5rem !important;
+    }
+    [data-testid="stSidebar"] {z-index: 999998 !important;}
     /* Reducir espacio superior */
     .block-container {padding-top: 1rem !important;}
-    /* Ocultar barra "Alojado con Streamlit" y avatar en mobile */
-    ._profileContainer_gzau3_53 {display: none !important;}
-    ._container_gzau3_1 {display: none !important;}
-    [data-testid="stBottom"] > div {display: none !important;}
-    .viewerBadge_link__qRIco {display: none !important;}
-    .stApp [data-testid="stBottomBlockContainer"] {display: none !important;}
-    a[href="https://streamlit.io"] {display: none !important;}
+    /* OCULTAR TODO: badge Streamlit, avatar, foto, barra roja - mobile y desktop */
     div[class*="viewerBadge"] {display: none !important;}
     div[class*="profileContainer"] {display: none !important;}
+    div[class*="stBottom"] {display: none !important;}
+    [data-testid="stBottom"] {display: none !important;}
+    [data-testid="stBottomBlockContainer"] {display: none !important;}
+    a[href*="streamlit.io"] {display: none !important;}
+    iframe[title="streamlit_badge"] {display: none !important;}
+    .viewerBadge_container__r5tak {display: none !important;}
+    .styles_viewerBadge__CvC9N {display: none !important;}
+    .viewerBadge_link__qRIco {display: none !important;}
+    ._container_gzau3_1 {display: none !important;}
+    ._profileContainer_gzau3_53 {display: none !important;}
+    /* Ocultar cualquier elemento fijo en la parte inferior */
+    .stApp > div:last-child > div:last-child > div:last-child {
+        display: none !important;
+    }
 
     /* Footer personalizado */
     .custom-footer {
@@ -199,6 +212,25 @@ st.markdown("""
         margin-top: 0.2rem;
     }
 </style>
+<script>
+    // Eliminar badge de Streamlit y avatar del DOM
+    function removeStreamlitBranding() {
+        const selectors = [
+            'div[class*="viewerBadge"]',
+            'div[class*="profileContainer"]',
+            '[data-testid="stBottom"]',
+            'a[href*="streamlit.io"]',
+            'iframe[title="streamlit_badge"]'
+        ];
+        selectors.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => el.remove());
+        });
+    }
+    // Ejecutar al cargar y repetir para elementos dinámicos
+    removeStreamlitBranding();
+    setInterval(removeStreamlitBranding, 1000);
+    new MutationObserver(removeStreamlitBranding).observe(document.body, {childList: true, subtree: true});
+</script>
 """, unsafe_allow_html=True)
 
 # ──────────────────────────────────────────────────────────────────────
